@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dough Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>
+    Dough Calculator
+</h1>
+
+<div class="main-container">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
+
+        <!-- Hydration -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label for="hydration">Hydration (%)</label>
+                <input type="number" id="hydration">
+            </div>
+        </div>
+
+        <!-- Ball 1 with Fill button -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label for="flour1">Ball 1 Weight (g)</label>
+                <input type="number" id="flour1">
+            </div>
+            <button class="fill-btn" onclick="fillWeights()">Fill</button>
+        </div>
+
+        <!-- Ball 2 -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label for="flour2">Ball 2 Weight (g)</label>
+                <input type="number" id="flour2">
+            </div>
+        </div>
+
+        <!-- Ball 3 -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label for="flour3">Ball 3 Weight (g)</label>
+                <input type="number" id="flour3">
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <button onclick="calculateAll()">Calculate All</button>
+        <button class="reset-btn" onclick="resetAll()">Reset</button>
+
+    </div>
+
+    <!-- MIDDLE COLUMN -->
+    <div class="middle-column">
+        <div class="results-box" id="totalResults"></div>
+        <div class="percent-box" id="percentResults"></div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+        <div class="steps-box" id="stepsBox"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
