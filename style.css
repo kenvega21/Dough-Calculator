@@ -24,7 +24,7 @@ h1 {
     box-shadow: 0 0 12px rgba(0,0,0,0.25);
 }
 
-/* === MAIN CONTAINER (3 columns) === */
+/* === MAIN CONTAINER === */
 .main-container {
     display: flex;
     flex-direction: row;
@@ -93,7 +93,7 @@ label {
     color: #222;
 }
 
-input {
+input, select {
     font-size: 16px;
     font-weight: 600;
     border: 2px solid #ccc;
@@ -211,6 +211,6 @@ button:hover { transform: scale(1.03); }
         min-height: 100vh;
     }
 
-    input, button { width: 100%; font-size: 18px; }
+    input, button, select { width: 100%; font-size: 18px; }
     h1 { font-size: 28px; }
 }
