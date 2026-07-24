@@ -72,23 +72,18 @@ function calculateAll() {
     const coldWater = totalWater - hotWaterFixed;
     const yeastPct = (yeastGrams / totalFlour * 100).toFixed(2);
 
-    // === TOTAL RESULTS ===
     document.getElementById("totalResults").innerHTML = `
         <strong>Total Dough Mix</strong>
         <span class="flour-total">${Math.round(totalFlour)} g Flour</span>
-
         Water: ${Math.round(totalWater)} g<br>
         <span class="hot-water">Hot Water: ${hotWaterFixed} g</span><br>
         <span class="cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
-
         Salt: ${Math.round(totalSalt)} g<br>
         Oil: ${Math.round(totalOil)} g<br>
         Yeast: ${yeastGrams} g<br><br>
-
         <strong>Total Dough Weight:</strong> ${Math.round(totalMix)} g
     `;
 
-    // === PERCENTAGES ===
     const waterPct = Math.round(totalWater / totalFlour * 100);
     const saltPct = (totalSalt / totalFlour * 100).toFixed(1);
     const oilPct = (totalOil / totalFlour * 100).toFixed(1);
@@ -101,7 +96,6 @@ function calculateAll() {
         Yeast: ${yeastPct}%
     `;
 
-    // === STEPS ===
     document.getElementById("stepsBox").innerHTML = `
         <strong>Steps</strong><br>
         1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
@@ -120,23 +114,17 @@ function calculateAll() {
         13. Refrigerate (48–72 hrs)
     `;
 
-    // === SHOW RESULTS ===
     const container = document.querySelector(".main-container");
     container.classList.add("show-results");
-
-    // Auto-scroll
     document.querySelector(".middle-column").scrollIntoView({ behavior: "smooth" });
 }
 
 // === RESET ===
 function resetAll() {
     const container = document.querySelector(".main-container");
-
-    // Fade-out animation
     container.classList.add("fade-out");
 
     setTimeout(() => {
-        // Clear inputs
         document.getElementById("hydration").value = "";
         document.getElementById("batchCount").value = "1";
         updateBatchVisibility();
@@ -145,22 +133,16 @@ function resetAll() {
             document.getElementById(`flour${i}`).value = "";
         }
 
-        // Clear results
         document.getElementById("totalResults").innerHTML = "";
         document.getElementById("percentResults").innerHTML = "";
         document.getElementById("stepsBox").innerHTML = "";
 
-        // Remove fade-in class
         container.classList.remove("show-results");
-
-        // Remove fade-out class
         container.classList.remove("fade-out");
 
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: "smooth" });
-
     }, 400);
 }
 
-// Initialize batch visibility on load
-updateBatchVisibility();
+// Initialize batch visibility after DOM loads
+document.addEventListener("DOMContentLoaded", updateBatchVisibility);
