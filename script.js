@@ -208,5 +208,9 @@ function enableStepsModal() {
 document.addEventListener("DOMContentLoaded", () => {
     updateBatchVisibility();
     enableStepsModal();
+
+    // Hide Fill button on first load
+    document.getElementById("fillBtn").style.display = "none";
+
     document.getElementById("batchToggle").addEventListener("change", updateBatchVisibility);
 });
