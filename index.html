@@ -18,8 +18,6 @@
 
     <!-- LEFT COLUMN -->
     <div class="left-column">
-
-        <!-- Hydration -->
         <div class="ball-section">
             <div class="input-group">
                 <label for="hydration">Hydration (%)</label>
@@ -27,7 +25,6 @@
             </div>
         </div>
 
-        <!-- Ball 1 with Fill button -->
         <div class="ball-section">
             <div class="input-group">
                 <label for="flour1">Ball 1 Weight (g)</label>
@@ -36,7 +33,6 @@
             <button class="fill-btn" onclick="fillWeights()">Fill</button>
         </div>
 
-        <!-- Ball 2 -->
         <div class="ball-section">
             <div class="input-group">
                 <label for="flour2">Ball 2 Weight (g)</label>
@@ -44,7 +40,6 @@
             </div>
         </div>
 
-        <!-- Ball 3 -->
         <div class="ball-section">
             <div class="input-group">
                 <label for="flour3">Ball 3 Weight (g)</label>
@@ -52,25 +47,19 @@
             </div>
         </div>
 
-        <!-- Buttons -->
         <button onclick="calculateAll()">Calculate All</button>
         <button class="reset-btn" onclick="resetAll()">Reset</button>
-
     </div>
 
-    <!-- Results Container -->
-<div class="results-section">
+    <!-- MIDDLE COLUMN -->
     <div class="middle-column">
         <div class="results-box" id="totalResults"></div>
         <div class="percent-box" id="percentResults"></div>
     </div>
 
+    <!-- RIGHT COLUMN -->
     <div class="right-column">
         <div class="steps-box" id="stepsBox"></div>
     </div>
+
 </div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
