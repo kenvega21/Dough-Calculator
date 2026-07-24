@@ -6,8 +6,8 @@ function updateBatchVisibility() {
     document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
     document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
 
-    // Show/hide Calculate button
-    document.getElementById("calculateBtn").style.display = count === 3 ? "block" : "none";
+    // Show/hide Fill button
+    document.getElementById("fillBtn").style.display = count === 3 ? "inline-block" : "none";
 }
 
 // === FILL BUTTON ===
@@ -133,7 +133,7 @@ function resetAll() {
     setTimeout(() => {
         // Clear inputs
         document.getElementById("hydration").value = "";
-        document.getElementById("batchCount").value = "3";
+        document.getElementById("batchCount").value = "1";
         updateBatchVisibility();
 
         for (let i = 1; i <= 3; i++) {
