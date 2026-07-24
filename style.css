@@ -35,6 +35,18 @@ h1 {
     min-height: 100vh;
     height: auto;
     flex-wrap: nowrap;
+    transition: opacity 0.4s ease;
+}
+
+/* === FADE-IN RESULTS === */
+.show-results .middle-column,
+.show-results .right-column {
+    opacity: 1;
+}
+
+/* === FADE-OUT RESET === */
+.fade-out {
+    opacity: 0;
 }
 
 /* === LEFT COLUMN === */
@@ -60,12 +72,6 @@ h1 {
     flex-direction: column;
     opacity: 0;
     transition: opacity 0.4s ease;
-}
-
-/* === FADE-IN RESULTS === */
-.show-results .middle-column,
-.show-results .right-column {
-    opacity: 1;
 }
 
 /* === BALL SECTIONS === */
