@@ -149,7 +149,7 @@ function calculateAll() {
 // === RESET ===
 function resetAll() {
     const container = document.querySelector(".main-container");
-    container.classList.add("fade-out");
+    container.classList.remove("fade-out");
 
     setTimeout(() => {
         // Reset inputs
