@@ -103,7 +103,8 @@ function calculateAll() {
     `;
 
     // === SHOW RESULTS ===
-    document.querySelector(".main-container").classList.add("show-results");
+    const container = document.querySelector(".main-container");
+    container.classList.add("show-results");
 
     // Auto-scroll
     document.querySelector(".middle-column").scrollIntoView({ behavior: "smooth" });
@@ -111,16 +112,31 @@ function calculateAll() {
 
 // === RESET ===
 function resetAll() {
-    document.getElementById("hydration").value = "";
-    for (let i = 1; i <= 3; i++) {
-        document.getElementById(`flour${i}`).value = "";
-    }
+    const container = document.querySelector(".main-container");
 
-    document.getElementById("totalResults").innerHTML = "";
-    document.getElementById("percentResults").innerHTML = "";
-    document.getElementById("stepsBox").innerHTML = "";
+    // Fade-out animation
+    container.classList.add("fade-out");
 
-    document.querySelector(".main-container").classList.remove("show-results");
+    setTimeout(() => {
+        // Clear inputs
+        document.getElementById("hydration").value = "";
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`flour${i}`).value = "";
+        }
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+        // Clear results
+        document.getElementById("totalResults").innerHTML = "";
+        document.getElementById("percentResults").innerHTML = "";
+        document.getElementById("stepsBox").innerHTML = "";
+
+        // Remove fade-in class
+        container.classList.remove("show-results");
+
+        // Remove fade-out class
+        container.classList.remove("fade-out");
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    }, 400); // matches CSS transition
 }
