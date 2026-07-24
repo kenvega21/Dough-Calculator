@@ -86,12 +86,12 @@ function calculateAll() {
     document.getElementById("totalResults").innerHTML = `
         <strong>Total Dough Mix</strong>
         <span class="flour-total">${Math.round(totalFlour)} g Flour</span>
-        Salt: ${Math.round(totalSalt)} g<br>
-        Oil: ${Math.round(totalOil)} g<br>
-        Yeast: ${yeastGrams} g<br><br>
-        Water: ${Math.round(totalWater)} g<br>
-        <span class="hot-water">Hot Water: ${hotWaterFixed} g</span><br>
-        <span class="cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
+        <span class="big-ingredient">Salt: ${Math.round(totalSalt)} g</span><br>
+<span class="big-ingredient">Oil: ${Math.round(totalOil)} g</span><br>
+<span class="big-ingredient">Yeast: ${yeastGrams} g</span><br><br>
+        <span class="big-water">Water: ${Math.round(totalWater)} g</span><br>
+<span class="big-water hot-water">Hot Water: ${hotWaterFixed} g</span><br>
+<span class="big-water cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
         <strong>Total Dough Weight:</strong> ${Math.round(totalMix)} g
     `;
 
@@ -101,10 +101,10 @@ function calculateAll() {
 
     document.getElementById("percentResults").innerHTML = `
         <strong>Baker's Percentages</strong><br>
-        Water: ${waterPct}%<br>
-        Salt: ${saltPct}%<br>
-        Oil: ${oilPct}%<br>
-        Yeast: ${yeastPct}%
+        <span class="big-percent">Water: ${waterPct}%</span><br>
+<span class="big-percent">Salt: ${saltPct}%</span><br>
+<span class="big-percent">Oil: ${oilPct}%</span><br>
+<span class="big-percent">Yeast: ${yeastPct}%</span>
     `;
 
     document.getElementById("stepsBox").innerHTML = `
