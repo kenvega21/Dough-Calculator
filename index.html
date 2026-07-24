@@ -21,10 +21,14 @@
         <div class="ball-section">
             <div class="input-group">
                 <label for="batchCount">Dough Balls</label>
-                <select id="batchCount" onchange="updateBatchVisibility()">
-                    <option value="1" selected>Single</option>
-                    <option value="3">Multiple</option>
-                </select>
+                <div class="toggle-wrapper">
+    <span class="toggle-label">Single</span>
+    <label class="switch">
+        <input type="checkbox" id="batchToggle">
+        <span class="slider"></span>
+    </label>
+    <span class="toggle-label">Multiple</span>
+</div>
             </div>
         </div>
 
