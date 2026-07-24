@@ -13,8 +13,14 @@ function updateBatchVisibility() {
     document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
 
     const fillBtn = document.getElementById("fillBtn");
-    fillBtn.style.display = count === 3 ? "inline-block" : "none";
+    // Fill button should be visible in SINGLE mode
+    fillBtn.style.display = count === 1 ? "inline-block" : "none";
 }
+
+// wire toggle
+document.getElementById("batchToggle").addEventListener("change", updateBatchVisibility);
+// initial state
+updateBatchVisibility();
 
 // === FILL BUTTON ===
 function fillWeights() {
@@ -101,3 +107,27 @@ function calculateAll() {
     `;
 
     document.getElementById("stepsBox").innerHTML = `
+        <strong>Steps</strong><br>
+        1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br><br>
+
+        2. Mix flour + salt (pulse 1×)<br>
+        3. Add <span class="cold-water">${Math.round(coldWater)} g cold water</span><br>
+        4. Pulse 5×<br>
+        5. Add yeast mix (pulse 3×)<br>
+        6. Add oil (pulse 3×)<br>
+        7. Dough button (10–15 sec)<br>
+        8. Knead dough (20–30 sec)<br><br>
+
+        9. Rest dough (20–30 min)<br>
+        10. Degas dough<br>
+        11. ½ tsp oil for container<br>
+        12. Ball dough and place in container<br>
+        13. Refrigerate (48–72 hrs)
+    `;
+
+    // Ripple animation for results
+    document.getElementById("totalResults").classList.add("ripple");
+    document.getElementById("percentResults").classList.add("ripple", "ripple-delay-1");
+    document.getElementById("stepsBox").classList.add("ripple", "ripple-delay-2");
+}
