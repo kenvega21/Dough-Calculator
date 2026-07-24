@@ -122,20 +122,6 @@ button {
 
 button:hover { transform: scale(1.03); }
 
-/* === TOGGLE SWITCH === */
-.toggle-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-}
-
-.toggle-label {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff8dc;
-}
-
 /* === SMALL OVAL TOGGLE SWITCH === */
 .toggle-wrapper {
     display: flex;
