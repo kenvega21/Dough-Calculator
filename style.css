@@ -255,3 +255,7 @@ button:not(.fill-btn):hover {
         min-height: 100vh;
     }
 }
+
+.results-section {
+    display: none; /* hidden until calculation */
+}
