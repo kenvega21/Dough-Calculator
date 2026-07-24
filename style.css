@@ -340,3 +340,21 @@ input:checked + .slider:before {
     input, button, select { width: 100%; font-size: 18px; }
     h1 { font-size: 28px; }
 }
+
+/* Bigger ingredient lines */
+.big-ingredient {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Bigger water lines */
+.big-water {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Bigger baker's percentages */
+.big-percent {
+    font-size: 20px;
+    font-weight: 700;
+}
