@@ -34,7 +34,7 @@ h1 {
     width: 100%;
     min-height: 100vh;
     height: auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 /* === LEFT COLUMN === */
