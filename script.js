@@ -72,12 +72,12 @@ function calculateAll() {
     document.getElementById("totalResults").innerHTML = `
         <strong>Total Dough Mix</strong>
         <span class="flour-total">${Math.round(totalFlour)} g Flour</span>
-        Water: ${Math.round(totalWater)} g<br>
-        <span class="hot-water">Hot Water: ${hotWaterFixed} g</span><br>
-        <span class="cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
         Salt: ${Math.round(totalSalt)} g<br>
         Oil: ${Math.round(totalOil)} g<br>
         Yeast: ${yeastGrams} g<br><br>
+        Water: ${Math.round(totalWater)} g<br>
+        <span class="hot-water">Hot Water: ${hotWaterFixed} g</span><br>
+        <span class="cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
         <strong>Total Dough Weight:</strong> ${Math.round(totalMix)} g
     `;
 
