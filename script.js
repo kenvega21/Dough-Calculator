@@ -1,3 +1,11 @@
+// === UPDATE BATCH VISIBILITY (1 or 3 only) ===
+function updateBatchVisibility() {
+    const count = parseInt(document.getElementById("batchCount").value);
+
+    document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
+    document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
+}
+
 // === FILL BUTTON ===
 function fillWeights() {
     const ball1Weight = document.getElementById("flour1").value;
@@ -31,6 +39,7 @@ function calculateAll() {
     const hydrationInput = parseFloat(document.getElementById("hydration").value);
     const hotWaterFixed = 30;
     const yeastGrams = 0.8;
+    const batchCount = parseInt(document.getElementById("batchCount").value);
 
     if (isNaN(hydrationInput)) {
         alert("Please enter hydration %");
@@ -40,7 +49,7 @@ function calculateAll() {
     const hydration = hydrationInput / 100;
     let totalFlour = 0, totalWater = 0, totalSalt = 0, totalOil = 0;
 
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= batchCount; i++) {
         const result = calculateBall(i, hydration);
         if (result) {
             totalFlour += result.flour;
@@ -120,6 +129,9 @@ function resetAll() {
     setTimeout(() => {
         // Clear inputs
         document.getElementById("hydration").value = "";
+        document.getElementById("batchCount").value = "3";
+        updateBatchVisibility();
+
         for (let i = 1; i <= 3; i++) {
             document.getElementById(`flour${i}`).value = "";
         }
@@ -138,5 +150,8 @@ function resetAll() {
         // Scroll to top
         window.scrollTo({ top: 0, behavior: "smooth" });
 
-    }, 400); // matches CSS transition
+    }, 400);
 }
+
+// Initialize batch visibility on load
+updateBatchVisibility();
