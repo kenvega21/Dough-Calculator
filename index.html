@@ -41,7 +41,6 @@
                 <input type="number" id="flour1">
             </div>
 
-            <!-- Fill button now has an ID -->
             <button id="fillBtn" class="fill-btn" onclick="fillWeights()">Fill</button>
         </div>
 
@@ -59,9 +58,7 @@
             </div>
         </div>
 
-        <!-- Calculate button ALWAYS visible -->
         <button id="calculateBtn" onclick="calculateAll()">Calculate</button>
-
         <button class="reset-btn" onclick="resetAll()">Reset</button>
 
     </div>
@@ -75,15 +72,16 @@
     <!-- RIGHT COLUMN -->
     <div class="right-column">
         <div class="steps-box" id="stepsBox"></div>
-        <!-- Fullscreen Steps Modal -->
+    </div>
+
+</div>
+
+<!-- FULLSCREEN STEPS MODAL -->
 <div id="stepsModal" class="steps-modal">
     <div class="steps-modal-content">
         <span id="closeSteps" class="close-btn">&times;</span>
         <div id="stepsModalText"></div>
     </div>
-</div>
-
-
 </div>
 
 <script src="script.js"></script>
