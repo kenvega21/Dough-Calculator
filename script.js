@@ -2,8 +2,12 @@
 function updateBatchVisibility() {
     const count = parseInt(document.getElementById("batchCount").value);
 
+    // Show/hide ball inputs
     document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
     document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
+
+    // Show/hide Calculate button
+    document.getElementById("calculateBtn").style.display = count === 3 ? "block" : "none";
 }
 
 // === FILL BUTTON ===
