@@ -1,212 +1,101 @@
-// === TOGGLE SWITCH MODE ===
-function getBatchCount() {
-    return document.getElementById("batchToggle").checked ? 3 : 1;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="3132693.ico">
+    <meta charset="UTF-8">
+    <title>Dough Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function updateBatchVisibility() {
-    const count = getBatchCount();
+<body>
 
-    // Change Ball 1 label based on mode
-    document.getElementById("ball1Label").textContent =
-        count === 1 ? "Ball Weight (g)" : "Ball 1 Weight (g)";
+<h1>Dough Calculator</h1>
 
-    // Show/hide Ball 2 and Ball 3
-    document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
-    document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
+<div class="main-container">
 
-    // Show/hide Fill button only in Multiple mode
-    const fillBtn = document.getElementById("fillBtn");
-    if (fillBtn) fillBtn.style.display = count === 3 ? "inline-block" : "none";
-}
+    <!-- LEFT COLUMN -->
+    <div class="left-column">
 
-// === FILL BUTTON ===
-function fillWeights() {
-    const ball1Weight = document.getElementById("flour1").value;
-    if (!ball1Weight) {
-        alert("Please enter a weight for Ball 1 first.");
-        return;
-    }
-    document.getElementById("flour2").value = ball1Weight;
-    document.getElementById("flour3").value = ball1Weight;
-}
+        <!-- Batch Toggle -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label>Dough Balls</label>
 
-// === CALCULATE ONE BALL ===
-function calculateBall(ball, hydration) {
-    const doughWeight = parseFloat(document.getElementById(`flour${ball}`).value);
-    const salt = 2.5 / 100;
-    const oil = 3.3 / 100;
+                <div class="toggle-wrapper">
+                    <span class="toggle-label">Single</span>
+                    <label class="switch">
+                        <input type="checkbox" id="batchToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label">Multiple</span>
+                </div>
 
-    if (isNaN(doughWeight)) return null;
+            </div>
+        </div>
 
-    const totalPercent = 1 + hydration + salt + oil;
-    const flour = doughWeight / totalPercent;
-    const water = flour * hydration;
-    const saltGrams = flour * salt;
-    const oilGrams = flour * oil;
+        <!-- Hydration -->
+        <div class="ball-section">
+            <div class="input-group">
+                <label for="hydration">Hydration (%)</label>
+                <input type="number" id="hydration">
+            </div>
+        </div>
 
-    return { flour, water, saltGrams, oilGrams, doughWeight };
-}
+        <!-- Ball 1 -->
+        <div class="ball-section" id="ball1Box">
+            <div class="input-group">
+                <label id="ball1Label" for="flour1">Ball 1 Weight (g)</label>
+                <input type="number" id="flour1">
+            </div>
 
-// === CALCULATE ALL ===
-function calculateAll() {
-    const hydrationInput = parseFloat(document.getElementById("hydration").value);
-    const hotWaterFixed = 30;
-    const yeastGrams = 0.8;
-    const batchCount = getBatchCount();
+            <button id="fillBtn" class="fill-btn" onclick="fillWeights()">Fill</button>
+        </div>
 
-    if (isNaN(hydrationInput)) {
-        alert("Please enter hydration %");
-        return;
-    }
+        <!-- Ball 2 -->
+        <div class="ball-section" id="ball2Box">
+            <div class="input-group">
+                <label for="flour2">Ball 2 Weight (g)</label>
+                <input type="number" id="flour2">
+            </div>
+        </div>
 
-    const hydration = hydrationInput / 100;
-    let totalFlour = 0, totalWater = 0, totalSalt = 0, totalOil = 0;
+        <!-- Ball 3 -->
+        <div class="ball-section" id="ball3Box">
+            <div class="input-group">
+                <label for="flour3">Ball 3 Weight (g)</label>
+                <input type="number" id="flour3">
+            </div>
+        </div>
 
-    for (let i = 1; i <= batchCount; i++) {
-        const result = calculateBall(i, hydration);
-        if (result) {
-            totalFlour += result.flour;
-            totalWater += result.water;
-            totalSalt += result.saltGrams;
-            totalOil += result.oilGrams;
-        }
-    }
+        <!-- Buttons -->
+        <button id="calculateBtn" onclick="calculateAll()">Calculate</button>
+        <button class="reset-btn" onclick="resetAll()">Reset</button>
 
-    const totalMix = totalFlour + totalWater + totalSalt + totalOil + yeastGrams;
-    const coldWater = totalWater - hotWaterFixed;
-    const yeastPct = (yeastGrams / totalFlour * 100).toFixed(2);
+    </div>
 
-    // Totals box
-    document.getElementById("totalResults").innerHTML = `
-        <strong>Total Dough Mix</strong>
-        <span class="flour-total">${Math.round(totalFlour)} g Flour</span>
+    <!-- MIDDLE COLUMN -->
+    <div class="middle-column">
+        <div class="results-box" id="totalResults"></div>
+        <div class="percent-box" id="percentResults"></div>
+    </div>
 
-        <span class="big-ingredient">Salt: ${Math.round(totalSalt)} g</span><br>
-        <span class="big-ingredient">Oil: ${Math.round(totalOil)} g</span><br>
-        <span class="big-ingredient">Yeast: ${yeastGrams} g</span><br><br>
+    <!-- RIGHT COLUMN -->
+    <div class="right-column">
+        <div class="steps-box" id="stepsBox"></div>
+    </div>
 
-        <span class="big-water">Water: ${Math.round(totalWater)} g</span><br>
-        <span class="big-water hot-water">Hot Water: ${hotWaterFixed} g</span><br>
-        <span class="big-water cold-water">Cold Water: ${Math.round(coldWater)} g</span><br><br>
+</div>
 
-        <strong>Total Dough Weight:</strong> ${Math.round(totalMix)} g
-    `;
+<!-- FULLSCREEN STEPS MODAL -->
+<div id="stepsModal" class="steps-modal">
+    <div class="steps-modal-content">
+        <span id="closeSteps" class="close-btn">&times;</span>
+        <div id="stepsModalText"></div>
+    </div>
+</div>
 
-    // Baker's percentages
-    const waterPct = Math.round(totalWater / totalFlour * 100);
-    const saltPct = (totalSalt / totalFlour * 100).toFixed(1);
-    const oilPct = (totalOil / totalFlour * 100).toFixed(1);
+<script src="script.js"></script>
 
-    document.getElementById("percentResults").innerHTML = `
-        <strong>Baker's Percentages</strong><br>
-        <span class="big-percent">Water: ${waterPct}%</span><br>
-        <span class="big-percent">Salt: ${saltPct}%</span><br>
-        <span class="big-percent">Oil: ${oilPct}%</span><br>
-        <span class="big-percent">Yeast: ${yeastPct}%</span>
-    `;
-
-    // Steps box
-    document.getElementById("stepsBox").innerHTML = `
-        <strong>Steps</strong><br>
-        1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br>
-        2. Mix flour + salt (pulse 1×)<br>
-        3. Add <span class="cold-water">Cold water (${Math.round(coldWater)} g)</span><br>
-        4. Pulse 5×<br>
-        5. Add yeast mix (pulse 3×)<br>
-        6. Add oil (pulse 3×)<br>
-        7. Dough button (10–15 sec)<br>
-        8. Knead dough (20–30 sec)<br>
-        9. Rest (20–30 min)<br>
-        10. Degas dough<br>
-        11. ½ tsp oil for container<br>
-        12. Ball dough and place in container<br>
-        13. Refrigerate (48–72 hrs)
-    `;
-
-    // Ripple animation classes
-    const totalBox = document.getElementById("totalResults");
-    const percentBox = document.getElementById("percentResults");
-    const stepsBox = document.getElementById("stepsBox");
-
-    totalBox.classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-    percentBox.classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-    stepsBox.classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-
-    // Force reflow so animation restarts cleanly
-    void totalBox.offsetWidth;
-
-    totalBox.classList.add("ripple");
-    percentBox.classList.add("ripple", "ripple-delay-1");
-    stepsBox.classList.add("ripple", "ripple-delay-2");
-
-    // Show results columns
-    const container = document.querySelector(".main-container");
-    container.classList.add("show-results");
-    document.querySelector(".middle-column").scrollIntoView({ behavior: "smooth" });
-}
-
-// === RESET ===
-function resetAll() {
-    const container = document.querySelector(".main-container");
-    container.classList.add("fade-out");
-
-    setTimeout(() => {
-        // Reset inputs
-        document.getElementById("hydration").value = "";
-        document.getElementById("batchToggle").checked = false;
-        updateBatchVisibility();
-
-        for (let i = 1; i <= 3; i++) {
-            document.getElementById(`flour${i}`).value = "";
-        }
-
-        // Clear results
-        document.getElementById("totalResults").innerHTML = "";
-        document.getElementById("percentResults").innerHTML = "";
-        document.getElementById("stepsBox").innerHTML = "";
-
-        // Remove ripple classes
-        document.getElementById("totalResults").classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-        document.getElementById("percentResults").classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-        document.getElementById("stepsBox").classList.remove("ripple", "ripple-delay-1", "ripple-delay-2");
-
-        // Reset visibility
-        container.classList.remove("show-results");
-        container.classList.remove("fade-out");
-        container.classList.add("show-results");
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 400);
-}
-
-// === STEPS MODAL ===
-function enableStepsModal() {
-    const stepsBox = document.getElementById("stepsBox");
-    const stepsModal = document.getElementById("stepsModal");
-    const stepsModalText = document.getElementById("stepsModalText");
-    const closeBtn = document.getElementById("closeSteps");
-
-    stepsBox.addEventListener("click", () => {
-        if (!stepsBox.innerHTML.trim()) return;
-        stepsModalText.innerHTML = stepsBox.innerHTML;
-        stepsModal.style.display = "block";
-    });
-
-    closeBtn.addEventListener("click", () => {
-        stepsModal.style.display = "none";
-    });
-
-    window.addEventListener("click", (event) => {
-        if (event.target === stepsModal) {
-            stepsModal.style.display = "none";
-        }
-    });
-}
-
-// === INIT ===
-document.addEventListener("DOMContentLoaded", () => {
-    updateBatchVisibility();
-    enableStepsModal();
-    document.getElementById("batchToggle").addEventListener("change", updateBatchVisibility);
-});
+</body>
+</html>
