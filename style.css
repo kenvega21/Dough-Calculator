@@ -122,11 +122,16 @@ button {
 
 button:hover { transform: scale(1.03); }
 
-/* === FILL BUTTON === */
+/* === SMALLER FILL BUTTON === */
 .fill-btn {
     background-color: #e8ffe8;
     color: #006400;
     border: 2px solid #006400;
+    width: 150px;        /* smaller */
+    padding: 6px;        /* tighter */
+    font-size: 14px;     /* smaller text */
+    margin-top: 8px;
+    align-self: center;
 }
 
 .fill-btn:hover { background-color: #c8f5c8; }
