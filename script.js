@@ -2,15 +2,12 @@
 function updateBatchVisibility() {
     const count = parseInt(document.getElementById("batchCount").value);
 
-    // Show/hide Ball 2 and Ball 3
     document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
     document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
 
-    // Show/hide Fill button only in 3-ball mode
     const fillBtn = document.getElementById("fillBtn");
     if (fillBtn) fillBtn.style.display = count === 3 ? "inline-block" : "none";
 
-    // Always show Calculate button
     const calcBtn = document.getElementById("calculateBtn");
     if (calcBtn) calcBtn.style.display = "block";
 }
@@ -144,5 +141,30 @@ function resetAll() {
     }, 400);
 }
 
-// Initialize batch visibility after DOM loads
-document.addEventListener("DOMContentLoaded", updateBatchVisibility);
+// === STEPS MODAL ===
+function enableStepsModal() {
+    const stepsBox = document.getElementById("stepsBox");
+    const stepsModal = document.getElementById("stepsModal");
+    const stepsModalText = document.getElementById("stepsModalText");
+    const closeBtn = document.getElementById("closeSteps");
+
+    stepsBox.addEventListener("click", () => {
+        stepsModalText.innerHTML = stepsBox.innerHTML;
+        stepsModal.style.display = "block";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        stepsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === stepsModal) {
+            stepsModal.style.display = "none";
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateBatchVisibility();
+    enableStepsModal();
+});
