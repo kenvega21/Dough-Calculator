@@ -255,14 +255,5 @@ button:not(.fill-btn):hover {
         min-height: 100vh;
     }
 }
-
-.results-section {
-    display: none;          /* hidden until Calculate All */
-    transition: opacity 0.4s ease; /* smooth fade-in */
-    opacity: 0;
-}
-
-.results-section.show {
-    display: block;
     opacity: 1;
 }
