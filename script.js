@@ -105,3 +105,17 @@ function resetAll() {
     document.getElementById("percentResults").innerHTML = "";
     document.getElementById("stepsBox").innerHTML = "";
 }
+
+function calculateAll() {
+    // your existing calculations here
+
+    const results = document.querySelector(".results-section");
+    results.classList.add("show");
+}
+
+function resetAll() {
+    // your existing reset logic here
+
+    const results = document.querySelector(".results-section");
+    results.classList.remove("show");
+}
