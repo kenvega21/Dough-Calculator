@@ -1,6 +1,13 @@
 // === UPDATE BATCH VISIBILITY (1 or 3 only) ===
+// === TOGGLE SWITCH MODE ===
+function getBatchCount() {
+    // If toggle is ON → Multiple (3 balls)
+    // If toggle is OFF → Single (1 ball)
+    return document.getElementById("batchToggle").checked ? 3 : 1;
+}
+
 function updateBatchVisibility() {
-    const count = parseInt(document.getElementById("batchCount").value);
+    const count = getBatchCount();
 
     // Change Ball 1 label based on mode
     document.getElementById("ball1Label").textContent =
@@ -10,7 +17,7 @@ function updateBatchVisibility() {
     document.getElementById("ball2Box").style.display = count === 3 ? "block" : "none";
     document.getElementById("ball3Box").style.display = count === 3 ? "block" : "none";
 
-    // Show/hide Fill button only in 3-ball mode
+    // Show/hide Fill button only in Multiple mode
     const fillBtn = document.getElementById("fillBtn");
     if (fillBtn) fillBtn.style.display = count === 3 ? "inline-block" : "none";
 
@@ -52,7 +59,7 @@ function calculateAll() {
     const hydrationInput = parseFloat(document.getElementById("hydration").value);
     const hotWaterFixed = 30;
     const yeastGrams = 0.8;
-    const batchCount = parseInt(document.getElementById("batchCount").value);
+    const batchCount = getBatchCount();
 
     if (isNaN(hydrationInput)) {
         alert("Please enter hydration %");
@@ -174,4 +181,10 @@ function enableStepsModal() {
 document.addEventListener("DOMContentLoaded", () => {
     updateBatchVisibility();
     enableStepsModal();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateBatchVisibility();
+    enableStepsModal();
+    document.getElementById("batchToggle").addEventListener("change", updateBatchVisibility);
 });
