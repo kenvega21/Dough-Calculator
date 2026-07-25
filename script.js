@@ -174,7 +174,7 @@ function resetAll() {
         // Reset visibility
         container.classList.remove("show-results");
         container.classList.remove("fade-out");
-        container.classList.add("show-results");
+        container.classList.remove("show-results");
 
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, 400);
