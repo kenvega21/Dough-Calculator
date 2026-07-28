@@ -110,18 +110,16 @@ function calculateAll() {
         <strong>Steps</strong><br>
         1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br>
-        2. Mix flour + salt (pulse 1×)<br>
-        3. Add <span class="cold-water">Cold water (${Math.round(coldWater)} g)</span><br>
-        4. Pulse 5×<br>
-        5. Add yeast mix (pulse 3×)<br>
-        6. Add oil (pulse 3×)<br>
-        7. Dough button (10–15 sec)<br>
-        8. Knead dough (20–30 sec)<br>
-        9. Rest (20–30 min)<br>
-        10. Degas dough<br>
-        11. ½ tsp oil for container<br>
-        12. Ball dough and place in container<br>
-        13. Refrigerate (48–72 hrs)
+        2. Mix <span class="cold-water">Cold water (${Math.round(coldWater)} g) + Salt + EVOO</span><br>
+        3. Add flour and cold water mix (pulse 5×)<br>
+        4. Add yeast mix<br>
+        5. Dough button (20–25 sec)<br>
+        6. Knead dough (20–30 sec)<br>
+        7. Rest (20–30 min)<br>
+        8. Degas dough<br>
+        9. ½ tsp oil for container<br>
+        10. Ball dough and place in container<br>
+        11. Refrigerate (48–72 hrs)
     `;
 
     // Ripple animation classes
