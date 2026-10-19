@@ -107,20 +107,24 @@ function calculateAll() {
 
     // Steps box
     document.getElementById("stepsBox").innerHTML = `
-        <strong>Steps</strong><br>
-        1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br>
-        2. Mix <span class="cold-water">Cold water (${Math.round(coldWater)} g)</span> + salt + oil<br>
-        3. Add flour and cold water mix (pulse 5×)<br>
-        4. Add yeast mix<br>
-        5. Dough button (20–25 sec)<br>
-        6. Knead dough (20–30 sec)<br>
-        7. Rest (20–30 min)<br>
-        8. Degas dough<br>
-        9. ½ tsp oil for container<br>
-        10. Ball dough and place in container<br>
-        11. Refrigerate (48–72 hrs)
-    `;
+    <strong>Steps</strong><br>
+    1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br>
+    2. Add flour + salt to the Ninja<br>
+    3. Add <span class="cold-water">Cold water (${Math.round(coldWater)} g)</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(Pulse 5×)<br>
+    4. Add yeast mix<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;(Pulse 3–5×)<br>
+    5. Add oil<br>
+    6. Dough button (20–25 sec)<br>
+    7. Knead dough (20–30 sec)<br>
+    8. Rest (20–30 min)<br>
+    9. Degas dough<br>
+    10. ½ tsp oil for container<br>
+    11. Ball dough and place in container<br>
+    12. Refrigerate (48–72 hrs)
+`;
+
 
     // Ripple animation classes
     const totalBox = document.getElementById("totalResults");
