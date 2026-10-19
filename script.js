@@ -110,7 +110,7 @@ function calculateAll() {
     <strong>Steps</strong><br>
     1. ¼ tsp yeast + <span class="hot-water">30g hot water</span><br>
     &nbsp;&nbsp;&nbsp;&nbsp;(Bloom 5 minutes)<br>
-    2. Add flour + salt to the Ninja<br>
+    2. Mix flour + salt<br>
     3. Add <span class="cold-water">Cold water (${Math.round(coldWater)} g)</span><br>
     &nbsp;&nbsp;&nbsp;&nbsp;(Pulse 5×)<br>
     4. Add yeast mix<br>
